@@ -35,4 +35,5 @@ new Vue ({
 		idInterval: 0,
 		isAutoplayActive: true,
 	}
+	methods :
 });
