@@ -10,30 +10,35 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="container-blur">
-        <div class="contents">
-            <div class="slider">
-                <div class="slider-viewer">
-                    <div class="controls">
-                        <div class="btn-left" @click="changeSlide(-1)">&#8593;</div>
-                        <div class="btn-right" @click="changeSlide(1)">&#8595;</div>
-                    </div>
-                    <div v-for="(objSlide, i) in arrImages" class="slide" :class="i === activeIndex ? 'active' : ''">
-                        <img :src="'img/' + objSlide.image" alt="objSlide.title">
-                        <div class="text">
-                            <h2>{{objSlide.title}}</h2>
-                            <p>{{objSlide.text}}</p>
-                        </div>
+    <div id="app">
+
+        <div class="container" >
+            <div class="slider-wrapper" tabindex="0" @mouseover="carouselStop" @mouseleave="carouselStart">
+                <div class="item">
+                    <img :src="this.slides[this.actualElement].image" alt="Svezia" />
+                    <div class="text">
+                        <h3>{{ this.slides[this.actualElement].title }}</h3>
+                        <p>
+                            {{ this.slides[this.actualElement].text }}
+                        </p>
                     </div>
                 </div>
+
                 <div class="thumbs">
+                    <div @click="previousElement()" class="prev"></div>
+                    <div @click="nextElement()" class="next"></div>
+                    <div v-on:click="setActualElement(index)" v-for="(thumb,index) in slides" class="thumb" :class="index === actualElement ? 'active' : ''">
+                        <img :src="thumb.image" alt="thumb.title"/>
+                    </div>
+    
                 </div>
-            </div>
-            <div class="bottoni">
-                <button class="btn-start-stop" data-functionality="stop">stop</button>
-                <button class="btn-invert">invert</button>
+
             </div>
         </div>
+		<div class="buttons">
+			<button class="stop">stop</button>
+			<button class="start">start</button>
+		</div>	
     </div>
 </body>
 </html>
