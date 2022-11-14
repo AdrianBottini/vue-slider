@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.13/dist/vue.js" defer></script> 
+    <script src="script/script.js" defer></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container-blur">
+        <div class="contents">
+            <div class="slider">
+                <div class="slider-viewer">
+                    <div class="controls">
+                        <div class="btn-left" @click="changeSlide(-1)">&#8593;</div>
+                        <div class="btn-right" @click="changeSlide(1)">&#8595;</div>
+                    </div>
+                    <div v-for="(objSlide, i) in arrImages" class="slide" :class="i === activeIndex ? 'active' : ''">
+                        <img src="'img/' + objSlide.image" alt="objSlide.title">
+                        <div class="text">
+                            <h2>{{objSlide.title}}</h2>
+                            <p>{{objSlide.text}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="thumbs">
+                </div>
+            </div>
+            <div class="bottoni">
+                <button class="btn-start-stop" data-functionality="stop">stop</button>
+                <button class="btn-invert">invert</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
