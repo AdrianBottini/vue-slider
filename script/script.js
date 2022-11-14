@@ -35,5 +35,31 @@ new Vue ({
 		idInterval: 0,
 		isAutoplayActive: true,
 	}
-	methods :
+	methods : {
+		changeSlide: moveRight() {
+			listEleImg[activeIndex].classList.remove('active');
+			listThumbs[activeIndex].classList.remove('active');
+		
+			activeIndex++;
+			
+			if (activeIndex === listEleImg.length) {
+				activeIndex = 0;
+			}
+		
+			listEleImg[activeIndex].classList.add('active');
+			listThumbs[activeIndex].classList.add('active');
+		}
+		changeSlide: moveLeft() {
+			listEleImg[activeIndex].classList.remove('active');
+			listThumbs[activeIndex].classList.remove('active');
+		
+			if (activeIndex === 0) {
+				activeIndex = listEleImg.length;
+			}
+			activeIndex--;
+		
+			listEleImg[activeIndex].classList.add('active');
+			listThumbs[activeIndex].classList.add('active');
+		}
+	}
 });
